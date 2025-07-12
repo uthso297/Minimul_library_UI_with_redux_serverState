@@ -68,7 +68,10 @@ export const booksApi = baseApi.injectEndpoints({
                 method: "PUT",
                 body: { copies },
             }),
-            invalidatesTags: (_result, _error, { id }) => [{ type: 'Book', id }],
+            invalidatesTags: (_result, _error, { id }) => [
+                { type: 'Book', id },
+                'books'
+            ],
         }),
     }),
 });

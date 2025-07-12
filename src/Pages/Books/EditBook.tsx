@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 const EditBook = () => {
     const { id } = useParams<{ id: string }>();
-    const { data, isLoading, isError } = useGetSingleBookQuery(id ?? "");
+    const { data, isLoading, isError,refetch } = useGetSingleBookQuery(id ?? "");
     const [updateBookCopies, { isLoading: updating }] = useUpdateBookCopiesMutation();
 
     const book = data?.data;
@@ -25,6 +25,7 @@ const EditBook = () => {
         try {
             await updateBookCopies({ id: book?._id, copies }).unwrap();
             Swal.fire("Success", "Book copies updated successfully!", "success");
+            await refetch()
         } catch (err) {
             let message = "Failed to update book copies.";
             if (err instanceof Error) {

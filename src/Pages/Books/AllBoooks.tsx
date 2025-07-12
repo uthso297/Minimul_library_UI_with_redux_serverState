@@ -75,7 +75,7 @@ const AllBooks = () => {
                                     : "bg-red-100 text-red-700"
                                     }`}
                             >
-                                {book.available ? "Available" : "Borrowed"}
+                                {book.available ? "Available" : "Unavailable"}
                             </span>
                         </div>
 

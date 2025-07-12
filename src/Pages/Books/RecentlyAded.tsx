@@ -35,7 +35,7 @@ const RecentlyAded = () => {
                             <span className="px-2 py-1 text-xs bg-gray-200 rounded-md">{book.genre}</span>
                             <span className={`px-2 py-1 text-xs rounded-md font-semibold ${book.available ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
                                 }`}>
-                                {book.available ? "Available" : "Borrowed"}
+                                {book.available ? "Available" : "Unavailable"}
                             </span>
                         </div>
 
