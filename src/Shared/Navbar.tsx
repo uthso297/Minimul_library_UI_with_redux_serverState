@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation } from 'react-router';
-import logo from '/public/open-book.png';
+import logo from '../assets/open-book.png';
 import { useState } from "react";
 
 const Navbar = () => {

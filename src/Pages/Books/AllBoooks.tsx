@@ -24,7 +24,7 @@ const AllBoooks = () => {
                         <img
                             src={book.url}
                             alt={book.title}
-                            className="w-full h-48 object-cover rounded-md mb-4"
+                            className="w-full h-48 rounded-md mb-4"
                         />
                         <h3 className="text-lg font-semibold text-gray-800">{book.title}</h3>
                         <p className="text-sm text-gray-500 mb-1">{book.author}</p>
