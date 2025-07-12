@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Loading from "../../Components/Loading";
 import { useGetBooksQuery, type IBook } from "../../Redux/Api/booksApi";
 
@@ -38,7 +39,7 @@ const AllBoooks = () => {
                         </div>
 
                         <div className="flex flex-wrap justify-between items-center mt-4 gap-2 text-sm">
-                            <button className="text-blue-600 hover:underline">View Details</button>
+                            <Link to={`/books/${book._id}`}><button className="text-blue-600 hover:underline">View Details</button></Link>
                             <button title="Edit Book" className="text-yellow-500 hover:underline">✏️</button>
                             <button title="Delete Book" className="text-red-500 hover:underline">🗑️</button>
                             <button

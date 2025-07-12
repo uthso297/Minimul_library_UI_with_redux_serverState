@@ -17,6 +17,11 @@ export interface BooksApiResponse {
     message: string;
     data: IBook[];
 }
+export interface SingleBooksApiResponse {
+    success: boolean;
+    message: string;
+    data: IBook;
+}
 
 export const booksApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -25,6 +30,9 @@ export const booksApi = baseApi.injectEndpoints({
         }),
         getRecentBooks: builder.query<BooksApiResponse, void>({
             query: () => 'api/books?sortBy=createdAt&sort=desc&limit=5',
+        }),
+        getSingleBook: builder.query<SingleBooksApiResponse, string>({
+            query: (id) => `api/books/${id}`,
         }),
         createBook: builder.mutation<IBook, Omit<IBook, "_id">>({
             query: (newBook) => ({
@@ -38,6 +46,7 @@ export const booksApi = baseApi.injectEndpoints({
 
 export const {
     useGetBooksQuery,
+    useGetSingleBookQuery,
     useGetRecentBooksQuery,
     useCreateBookMutation,
 } = booksApi;

@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Loading from "../../Components/Loading";
 import { useGetRecentBooksQuery, type IBook } from "../../Redux/Api/booksApi";
 
@@ -14,7 +15,6 @@ const RecentlyAded = () => {
         console.error("Error fetching books:", error);
         return <p>Error loading books</p>;
     }
-    console.log(data);
     return (
         <div className="px-4 md:px-8 lg:px-16 py-8">
             <h2 className="text-3xl font-bold text-gray-800 mb-2">Recently Added Books</h2>
@@ -40,7 +40,7 @@ const RecentlyAded = () => {
                         </div>
 
                         <div className="flex flex-wrap justify-between items-center mt-4 gap-2 text-sm">
-                            <button className="text-blue-600 hover:underline">View Details</button>
+                            <Link to={`/books/${book._id}`}><button className="text-blue-600 hover:underline">View Details</button></Link>
                             <button title="Edit Book" className="text-yellow-500 hover:underline">✏️</button>
                             <button title="Delete Book" className="text-red-500 hover:underline">🗑️</button>
                             <button
