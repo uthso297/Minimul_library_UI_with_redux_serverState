@@ -5,11 +5,24 @@ export interface IBorrow {
     quantity: number,
     dueDate: string
 }
+export interface Borrow {
+    book: {
+        title: string;
+        isbn: string;
+    },
+    totalQuantity: number;
+}
+
 
 export interface BorrowApiResPonse {
     success: boolean;
     message: string;
     data: object
+}
+export interface GetBorrowApiResPonse {
+    success: boolean;
+    message: string;
+    data: Borrow[]
 }
 
 export const borrowApi = baseApi.injectEndpoints({
@@ -21,8 +34,12 @@ export const borrowApi = baseApi.injectEndpoints({
                 body: newBorrow
             }),
             invalidatesTags: (_result, _error, { book }) => [{ type: 'Book', id: book }],
+        }),
+        getAllBorrow: builder.query<GetBorrowApiResPonse, void>({
+            query: () => 'api/borrow',
+            providesTags: ['Book']
         })
     })
 })
 
-export const { useCreateBorrowMutation } = borrowApi
+export const { useCreateBorrowMutation, useGetAllBorrowQuery } = borrowApi
