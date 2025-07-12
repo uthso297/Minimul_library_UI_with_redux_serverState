@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useGetSingleBookQuery } from "../../Redux/Api/booksApi";
 import Loading from "../../Components/Loading";
 
@@ -20,9 +20,7 @@ const SingleBook = () => {
     }
     return (
         <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg mt-5 border-[1px] border-[#EBEBEA]">
-            {/* Top Section */}
             <div className="flex flex-col md:flex-row gap-6">
-                {/* Book Cover */}
                 <div className="w-full md:w-1/4 flex justify-center">
                     <img
                         src={book?.url}
@@ -31,7 +29,6 @@ const SingleBook = () => {
                     />
                 </div>
 
-                {/* Book Info */}
                 <div className="w-full md:w-3/4 space-y-4">
                     <h2 className="text-2xl font-bold">{book?.title}</h2>
                     <p className="text-gray-600 text-lg font-medium">{book?.author}</p>
@@ -41,9 +38,22 @@ const SingleBook = () => {
                     <p className="text-gray-700 mt-2">{book?.description}</p>
 
                     <div className="flex gap-3 mt-4">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
-                            Borrow Book
-                        </button>
+                        {(book?.copies ?? 0) > 0 ? (
+                            <Link to={`/borrow/${book?._id}`}>
+                                <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
+                                    Borrow Book
+                                </button>
+                            </Link>
+                        ) : (
+                            <button
+                                className="bg-gray-400 text-white px-4 py-2 rounded text-sm cursor-not-allowed"
+                                disabled
+                            >
+                                Borrow Book
+                            </button>
+                        )}
+
+
                         <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded text-sm">
                             Edit Details
                         </button>
@@ -51,9 +61,7 @@ const SingleBook = () => {
                 </div>
             </div>
 
-            {/* Bottom Section */}
             <div className="mt-8 grid md:grid-cols-3 gap-6">
-                {/* Key Details */}
                 <div className="border border-[#EBEBEA] rounded p-4">
                     <h4 className="font-semibold text-gray-800 mb-3">Key Details</h4>
                     <p><strong>ISBN:</strong> {book?.isbn}</p>
@@ -61,7 +69,6 @@ const SingleBook = () => {
                     <p><strong>Language:</strong> English</p>
                 </div>
 
-                {/* Availability */}
                 <div className="border border-[#EBEBEA] rounded p-4">
                     <h4 className="font-semibold text-gray-800 mb-3">Availability & Location</h4>
                     <p>
@@ -74,7 +81,6 @@ const SingleBook = () => {
                     <p><strong>Location:</strong> Dhaka</p>
                 </div>
 
-                {/* Reader Reviews */}
                 <div className="border border-[#EBEBEA] rounded p-4">
                     <h4 className="font-semibold text-gray-800 mb-3">Reader Reviews</h4>
                     <div className="flex items-center gap-2">
@@ -83,7 +89,6 @@ const SingleBook = () => {
                         <span className="text-sm text-gray-500">(55 reviews)</span>
                     </div>
 
-                    {/* Fake bars */}
                     <div className="mt-4 space-y-2">
                         <div className="bg-gray-200 rounded h-2">
                             <div className="bg-blue-500 h-2 rounded w-[75%]"></div>

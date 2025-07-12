@@ -15,7 +15,7 @@ const initialFormData: NewBookForm = {
   genre: "FICTION",
   isbn: "",
   description: "",
-  copies: "", 
+  copies: "",
   available: true,
   url: "",
 };
@@ -32,7 +32,7 @@ const CreateBook = () => {
     const newValue =
       type === "checkbox" && e.target instanceof HTMLInputElement
         ? e.target.checked
-        : value; 
+        : value;
 
     setFormData((prev) => ({
       ...prev,
@@ -61,11 +61,10 @@ const CreateBook = () => {
       });
       setFormData(initialFormData);
     } catch (err) {
-      console.error("Failed to create book:", err);
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'There was an error creating the book.',
+        text: `There was an error creating the book.Error: ${err}`,
       });
     }
   };

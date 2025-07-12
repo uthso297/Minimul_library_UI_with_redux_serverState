@@ -41,15 +41,17 @@ const RecentlyAded = () => {
 
                         <div className="flex flex-wrap justify-between items-center mt-4 gap-2 text-sm">
                             <Link to={`/books/${book._id}`}><button className="text-blue-600 hover:underline">View Details</button></Link>
-                            {/* <button title="Edit Book" className="text-yellow-500 hover:underline">✏️</button>
-                            <button title="Delete Book" className="text-red-500 hover:underline">🗑️</button> */}
-                            <button
-                                disabled={!book.available}
-                                className={`px-3 py-1 rounded text-white text-xs font-medium ${book.available ? "bg-pink-500 hover:bg-pink-600" : "bg-gray-400 cursor-not-allowed"
-                                    }`}
-                            >
-                                Borrow
-                            </button>
+                            <Link to={`/borrow/${book._id}`}>
+                                <button
+                                    disabled={!book.available}
+                                    className={`px-3 py-1 rounded text-white text-xs font-medium ${book.available
+                                        ? "bg-pink-500 hover:bg-pink-600"
+                                        : "bg-gray-400 cursor-not-allowed"
+                                        }`}
+                                >
+                                    Borrow
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 ))}

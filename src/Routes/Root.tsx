@@ -39,7 +39,7 @@ const Root = createBrowserRouter([
                 element: <EditBook></EditBook>
             },
             {
-                path: '/borrow/:id',
+                path: '/borrow/:BookId',
                 element: <Borrow></Borrow>
             },
             {

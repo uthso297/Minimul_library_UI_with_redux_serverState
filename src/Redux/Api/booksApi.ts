@@ -36,10 +36,11 @@ export const booksApi = baseApi.injectEndpoints({
         }),
         getRecentBooks: builder.query<BooksApiResponse, void>({
             query: () => 'api/books?sortBy=createdAt&sort=desc&limit=5',
+            providesTags: ['books']
         }),
         getSingleBook: builder.query<SingleBooksApiResponse, string>({
             query: (id) => `api/books/${id}`,
-            providesTags: ['books']
+            providesTags: (_result, _error, id) => [{ type: 'Book', id }],
         }),
         createBook: builder.mutation<IBook, Omit<IBook, "_id">>({
             query: (newBook) => ({
