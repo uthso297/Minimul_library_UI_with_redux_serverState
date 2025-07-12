@@ -22,17 +22,24 @@ export interface SingleBooksApiResponse {
     message: string;
     data: IBook;
 }
+export interface DeleteBookApiResponse {
+    success: boolean;
+    message: string;
+    data: null;
+}
 
 export const booksApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getBooks: builder.query<BooksApiResponse, void>({
             query: () => 'api/books',
+            providesTags: ['books']
         }),
         getRecentBooks: builder.query<BooksApiResponse, void>({
             query: () => 'api/books?sortBy=createdAt&sort=desc&limit=5',
         }),
         getSingleBook: builder.query<SingleBooksApiResponse, string>({
             query: (id) => `api/books/${id}`,
+            providesTags: ['books']
         }),
         createBook: builder.mutation<IBook, Omit<IBook, "_id">>({
             query: (newBook) => ({
@@ -40,6 +47,14 @@ export const booksApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body: newBook,
             }),
+            invalidatesTags: ['books']
+        }),
+        deleteBook: builder.mutation<DeleteBookApiResponse, string>({
+            query: (id) => ({
+                url: `api/books/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['books']
         }),
     }),
 });
@@ -49,4 +64,5 @@ export const {
     useGetSingleBookQuery,
     useGetRecentBooksQuery,
     useCreateBookMutation,
+    useDeleteBookMutation
 } = booksApi;
