@@ -54,9 +54,11 @@ const SingleBook = () => {
                         )}
 
 
-                        <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded text-sm">
-                            Edit Details
-                        </button>
+                        <Link to={`/edit-book/${book?._id}`}>
+                            <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded text-sm">
+                                Edit Details
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

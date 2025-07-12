@@ -27,6 +27,11 @@ export interface DeleteBookApiResponse {
     message: string;
     data: null;
 }
+export interface UpdateBookApiResponse {
+    success: boolean;
+    message: string;
+    data: IBook;
+}
 
 export const booksApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -57,6 +62,14 @@ export const booksApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ['books']
         }),
+        updateBookCopies: builder.mutation<UpdateBookApiResponse, { id: string | undefined; copies: number }>({
+            query: ({ id, copies }) => ({
+                url: `api/books/${id}`,
+                method: "PUT",
+                body: { copies },
+            }),
+            invalidatesTags: (_result, _error, { id }) => [{ type: 'Book', id }],
+        }),
     }),
 });
 
@@ -65,5 +78,6 @@ export const {
     useGetSingleBookQuery,
     useGetRecentBooksQuery,
     useCreateBookMutation,
-    useDeleteBookMutation
+    useDeleteBookMutation,
+    useUpdateBookCopiesMutation
 } = booksApi;

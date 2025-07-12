@@ -35,7 +35,7 @@ const Root = createBrowserRouter([
                 element: <SingleBook></SingleBook>
             },
             {
-                path: '/edit-boook/:id',
+                path: '/edit-book/:id',
                 element: <EditBook></EditBook>
             },
             {

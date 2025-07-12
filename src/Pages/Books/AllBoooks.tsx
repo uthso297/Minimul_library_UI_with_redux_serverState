@@ -83,9 +83,11 @@ const AllBooks = () => {
                             <Link to={`/books/${book._id}`}>
                                 <button className="text-blue-600 hover:underline">View Details</button>
                             </Link>
-                            <button title="Edit Book" className="text-yellow-500 hover:underline">
-                                ✏️
-                            </button>
+                            <Link to={`/edit-book/${book._id}`}>
+                                <button title="Edit Book" className="text-yellow-500 hover:underline">
+                                    ✏️
+                                </button>
+                            </Link>
                             <button
                                 onClick={() => handleDelete(book._id)}
                                 title="Delete Book"
