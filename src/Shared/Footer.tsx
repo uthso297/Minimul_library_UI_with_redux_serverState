@@ -1,35 +1,45 @@
 const Footer = () => {
     return (
-        <div className="px-6 py-4 space-y-16">
+        <div className="px-6 py-8 space-y-12 bg-white">
             <h1 className="font-bold text-xl text-center">LibraryMate</h1>
-            <div className="w-fit mx-auto text-center space-y-3">
+
+            <div className="w-full max-w-md mx-auto text-center space-y-3">
                 <p>Stay updated with our library</p>
-                <div className='relative flex items-center justify-between gap-1'>
-                    <input
-                        className="border-2 border-[#EBEBEA] rounded-lg pl-9 py-1 w-64"
-                        aria-label="Search books"
-                        type="email"
-                        placeholder="Enter your email"
-                    />
-                    <svg
-                        className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8l8 6 8-6v10H4z" />
-                    </svg>
-                    <button className="bg-[#636AE8FF] px-3 py-2 text-white rounded-lg">Subsribe</button>
+                <div className="relative flex flex-col sm:flex-row items-center gap-2 sm:gap-1">
+                    <div className="relative w-full">
+                        <input
+                            className="border-2 border-[#EBEBEA] rounded-lg pl-9 py-2 w-full"
+                            aria-label="Email"
+                            type="email"
+                            placeholder="Enter your email"
+                        />
+                        <svg
+                            className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8l8 6 8-6v10H4z" />
+                        </svg>
+                    </div>
+                    <button className="bg-[#636AE8FF] px-4 py-2 text-white rounded-lg w-full sm:w-auto">
+                        Subscribe
+                    </button>
                 </div>
             </div>
-            <div className="flex items-center justify-between">
-                <button className="text-[#8C8D8BFF] px-3 py-2 rounded-lg bg-[#F7F7F7FF]">English</button>
-                <p className="text-[#8C8D8BFF]">&copy; 2025 LibraryMate. All rights reserved.</p>
-                <ul className="flex space-x-4">
+
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center text-sm text-[#8C8D8BFF]">
+                <button className="px-3 py-2 rounded-lg bg-[#F7F7F7FF] w-full md:w-auto">
+                    English
+                </button>
+
+                <p className="w-full md:w-auto">&copy; 2025 LibraryMate. All rights reserved.</p>
+
+                <ul className="flex justify-center gap-4 w-full md:w-auto">
                     <li>
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <svg
-                                className="w-6 h-6 text-[#8C8D8BFF] hover:text-blue-800"
+                                className="w-6 h-6 hover:text-blue-800"
                                 fill="currentColor"
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +52,7 @@ const Footer = () => {
                     <li>
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                             <svg
-                                className="w-6 h-6 text-[#8C8D8BFF] hover:text-blue-700"
+                                className="w-6 h-6 hover:text-blue-700"
                                 fill="currentColor"
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +63,6 @@ const Footer = () => {
                     </li>
                 </ul>
             </div>
-
         </div>
     );
 };
